@@ -1,0 +1,9 @@
+<template>
+    <li key={code} class="slds-dropdown__item" role="presentation">
+        <a onclick={handleCountrySelected} role="menuitem" tabindex="0">
+            <span class="slds-truncate" title={countryInfo.name}>
+                <span class={flagCss}></span>&nbsp;{countryInfo.name}
+            </span>
+        </a>
+    </li>
+</template>

@@ -1,0 +1,35 @@
+<template>
+    <div class="slds-grid slds-box slds-box_xx-small">
+        <div class="slds-col slds-grow-none">
+            <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                <a onclick={toggleCountrySelector}>
+                    <span class={currentSelectedCountryFlag}></span>
+                    <template if:false={showCountrySelector}>
+                        <lightning-icon icon-name="utility:right" size="xx-small"></lightning-icon>
+                    </template>
+                    <template if:true={showCountrySelector}>
+                        <lightning-icon icon-name="utility:down" size="xx-small"></lightning-icon>
+                    </template>
+                    
+                </a>
+                <template if:true={showCountrySelector}>
+                    <div class="slds-dropdown slds-dropdown_left slds-dropdown_small">
+                        <ul class="slds-dropdown__list" role="menu" aria-label="Select Country">
+                            <template for:each={countriesAndPhoneNumbers} for:item="countryPhone">
+                                <c-input-phone-country-item key={countryPhone.code} country-info={countryPhone} oncountryselected={handleCountrySelect}>
+                                </c-input-phone-country-item> 
+                            </template>
+                        </ul>
+                    </div>
+                </template>
+    
+            </div>
+        </div>
+        <div class="slds-col">
+            <div class="slds-form-element">
+                <lightning-input type="text" value={phoneNumber} name="phoneNumber" placeholder={currentCountryNumberPlaceholder} variant="label-hidden" onchange={formatPhoneNumber}></lightning-input>
+            </div>
+        </div>
+    </div>
+
+</template>
